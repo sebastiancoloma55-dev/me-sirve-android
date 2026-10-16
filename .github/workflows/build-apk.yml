@@ -1,8 +1,6 @@
 name: Construir APK de Me Sirve
 on:
   workflow_dispatch:
-  push:
-    branches: [ "main" ]
 permissions:
   contents: read
 jobs:
@@ -11,6 +9,9 @@ jobs:
     steps:
       - name: Descargar código
         uses: actions/checkout@v4
+      - name: Verificar aplicación web
+        run: |
+          test -s app/src/main/assets/www/index.html || (echo "::error::Falta app/src/main/assets/www/index.html. Sube el HTML actualizado de Me Sirve a esa ruta y vuelve a ejecutar." && exit 1)
       - name: Configurar Java
         uses: actions/setup-java@v4
         with:
