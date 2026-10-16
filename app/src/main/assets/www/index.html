@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#176b4d">
+<meta name="description" content="Organiza tus compras, tu despensa y tus comidas con Me Sirve.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Me Sirve">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Me Sirve — Tu casa, mejor organizada</title>
+<style>
+:root{--ink:#17211d;--muted:#68756e;--green:#176b4d;--green2:#e5f4ec;--lime:#c8f169;--paper:#f5f7f4;--line:#e0e7e1;--white:#fff;--orange:#b85d28;--shadow:0 12px 32px #17211d0b}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:1240px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:15px;background:var(--green);color:white;display:grid;place-items:center;font-size:25px;font-weight:900}.brand h1{font-size:20px;letter-spacing:-.7px;margin:0}.brand p{margin:0;color:var(--muted);font-size:12px}.pill{background:#fff;border:1px solid var(--line);border-radius:99px;padding:8px 12px;font-size:12px;color:var(--muted)}.hero{background:var(--green);color:white;border-radius:25px;padding:30px;display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:center;box-shadow:var(--shadow)}.eyebrow{color:var(--lime);font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase}.hero h2{font-size:clamp(30px,4vw,46px);line-height:1.06;letter-spacing:-1.8px;margin:12px 0}.hero p{color:#d9e9df;max-width:580px;margin:0}.hero-stat{background:#ffffff13;border:1px solid #ffffff28;border-radius:19px;padding:20px}.hero-stat small{display:block;color:#d9e9df}.hero-stat strong{font-size:30px;display:block;margin:4px 0}.nav{display:flex;gap:8px;overflow:auto;margin:20px 0}.nav button{white-space:nowrap;border:1px solid var(--line);background:white;padding:11px 16px;border-radius:13px;font-weight:750;color:var(--muted)}.nav button.active{background:var(--ink);color:white;border-color:var(--ink)}.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:18px}.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:21px;box-shadow:var(--shadow);margin-bottom:18px;min-width:0}.panel h3{margin:0 0 5px;font-size:18px;letter-spacing:-.4px}.muted{color:var(--muted)}.small{font-size:12px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.spread{display:flex;align-items:center;justify-content:space-between;gap:12px}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:800;background:var(--green);color:white}.btn.secondary{background:var(--green2);color:var(--green)}.btn.ghost{background:white;border:1px solid var(--line);color:var(--ink)}.btn.danger{background:#fff0ec;color:#9e3927}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field label{font-size:12px;font-weight:800;color:var(--muted)}input,select,textarea{border:1px solid var(--line);border-radius:11px;padding:11px 12px;background:#fff;color:var(--ink);width:100%;min-width:0}input:focus,select:focus,textarea:focus{outline:2px solid #b7e2ca;border-color:var(--green)}.upload{border:1.5px dashed #b9cbbf;background:#f8fbf8;border-radius:16px;padding:22px;text-align:center}.upload .bigicon{font-size:30px}.upload input{max-width:100%;margin-top:12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.items-head,.item{display:grid;grid-template-columns:minmax(0,1fr) 88px 100px 34px;gap:8px;align-items:center}.items-head{font-size:11px;color:var(--muted);font-weight:800;padding:13px 0 7px}.item{padding:8px 0;border-top:1px solid #eef1ee}.item input{padding:9px}.item .remove{background:#fff0ec;color:#9e3927;border:0;border-radius:9px;height:36px}.totals{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}.metric{padding:13px;border-radius:13px;background:var(--paper)}.metric small{display:block;color:var(--muted);font-size:11px}.metric strong{font-size:21px}.notice{padding:12px 14px;background:#fff8e9;border:1px solid #f2e4bd;border-radius:12px;color:#74571b;font-size:12px;margin-top:12px}.empty{text-align:center;padding:35px 14px;color:var(--muted)}.receipt{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}.receipt h4{margin:0}.receipt .ritems{font-size:12px;color:var(--muted);margin:7px 0}.recipe-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.recipe{border:1px solid var(--line);border-radius:16px;padding:16px;background:white}.recipe .emoji{font-size:28px}.recipe h4{margin:7px 0 4px}.recipe p{margin:5px 0;color:var(--muted);font-size:12px}.tag{display:inline-block;background:var(--green2);color:var(--green);font-size:11px;padding:4px 8px;border-radius:99px;font-weight:800;margin:3px 3px 0 0}.tag.missing{background:#fff0ec;color:#9e3927}.ingredient-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.ingredient-chip{border:1px solid var(--line);border-radius:99px;padding:7px 11px;background:white;font-size:12px}.ingredient-chip.on{background:var(--green2);border-color:#a8d8bd;color:var(--green);font-weight:800}.history-controls{display:grid;grid-template-columns:1fr 180px;gap:10px;margin:15px 0}.bar{height:8px;border-radius:99px;background:#e8eee9;overflow:hidden;margin-top:10px}.bar span{display:block;height:100%;background:var(--lime);width:0}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#17211d;color:white;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);display:none;z-index:5}.footer{text-align:center;color:var(--muted);font-size:11px;padding:18px}.hide{display:none!important}
+
+/* Me Sirve Pro: refinamientos de interfaz */
+.nav{padding-bottom:3px;scrollbar-width:thin;flex-wrap:wrap}.nav button{transition:transform .15s,background .15s}.nav button:hover{transform:translateY(-1px)}
+.page-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin:8px 0 18px}.page-heading h2{font-size:27px;letter-spacing:-1px;margin:0}.page-heading p{margin:5px 0 0;color:var(--muted)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:18px 0}.kpi{background:white;border:1px solid var(--line);border-radius:17px;padding:17px;min-width:0}.kpi .kpi-icon{font-size:20px;margin-bottom:9px}.kpi small{display:block;color:var(--muted);font-size:12px}.kpi strong{display:block;font-size:23px;letter-spacing:-.6px;margin-top:4px;overflow-wrap:anywhere}.kpi .kpi-foot{font-size:11px;color:var(--muted);margin-top:5px}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.formline{display:grid;grid-template-columns:minmax(0,1fr) 130px auto;gap:8px;align-items:end}.data-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #edf1ed}.data-row:first-child{border-top:0}.data-row .main{min-width:0;flex:1}.data-row .main strong{display:block;overflow-wrap:anywhere}.data-row .sub{font-size:12px;color:var(--muted)}.icon-btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 10px;color:var(--ink)}.icon-btn.danger{background:#fff0ec;color:#9e3927}.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4b9d70;margin-right:6px}.meter-row{display:grid;grid-template-columns:minmax(80px,1fr) 2fr auto;gap:10px;align-items:center;margin:12px 0;font-size:12px}.meter{height:9px;background:#edf1ed;border-radius:99px;overflow:hidden}.meter span{display:block;height:100%;background:var(--green);border-radius:99px}.callout{border-radius:15px;padding:15px;background:#eff8f1;border:1px solid #d6ebdc}.callout strong{display:block}.list-check{width:18px;height:18px;accent-color:var(--green)}.chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);padding:5px 9px;border-radius:99px;font-size:11px;color:var(--muted)}.chart-bars{display:flex;align-items:flex-end;gap:10px;height:180px;padding:12px 4px 0;border-bottom:1px solid var(--line)}.chart-col{display:flex;flex:1;height:100%;align-items:center;justify-content:flex-end;flex-direction:column;gap:7px;min-width:0}.chart-col .barcol{width:min(34px,75%);min-height:3px;background:var(--green);border-radius:7px 7px 2px 2px}.chart-col small{font-size:10px;color:var(--muted);text-align:center}.chart-col em{font-size:10px;font-style:normal;color:var(--muted)}.tip{border-left:3px solid var(--lime);padding:10px 13px;background:#fafcf6;border-radius:0 10px 10px 0;font-size:13px}.privacy{display:flex;gap:10px;align-items:flex-start;background:#f8faf8;border:1px solid var(--line);border-radius:13px;padding:13px;font-size:12px;color:var(--muted)}
+@media(max-width:820px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.split{grid-template-columns:1fr}.page-heading{display:block}.formline{grid-template-columns:1fr 100px}.formline button{grid-column:1/-1}}
+@media(max-width:500px){.kpi{padding:13px}.kpi strong{font-size:19px}.kpi-grid{gap:8px}.meter-row{grid-template-columns:75px 1fr auto}.formline{grid-template-columns:1fr}.formline button{grid-column:auto}}
+@media(max-width:820px){.app{padding:14px}.hero{grid-template-columns:1fr;padding:23px}.grid{grid-template-columns:1fr}.recipe-grid{grid-template-columns:1fr}.top{align-items:flex-start}.pill{display:none}}@media(max-width:500px){.two{grid-template-columns:1fr}.items-head,.item{grid-template-columns:minmax(0,1fr) 64px 82px 30px;gap:5px}.item input{padding:8px 6px;font-size:12px}.items-head{font-size:10px}.panel{padding:15px}.history-controls{grid-template-columns:1fr}}
+
+/* Presentación móvil y experiencia de aplicación */
+.header-actions{display:flex;align-items:center;gap:10px}.install-btn{white-space:nowrap}
+.mobile-dock,.mobile-more-backdrop,.mobile-more-panel{display:none}
+button,input,select{touch-action:manipulation}
+input,select,textarea{min-height:44px}
+button{min-height:42px}
+@media(max-width:700px){
+  body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  .app{padding:12px 12px 20px}
+  .top{margin-bottom:12px;align-items:center}
+  .brand{gap:9px}.brand .logo{width:40px;height:40px;border-radius:13px;font-size:22px}
+  .brand h1{font-size:18px}.brand p{font-size:11px}
+  .header-actions .pill{display:none}.install-btn{font-size:12px;padding:9px 10px}
+  .hero{border-radius:20px;padding:20px;gap:14px}
+  .hero h2{font-size:32px;letter-spacing:-1.2px}
+  .hero-stat{padding:14px}.hero-stat strong{font-size:25px}
+  .nav{display:none}
+  .nav.mobile-open{display:flex;position:fixed;z-index:50;left:10px;right:10px;bottom:calc(72px + env(safe-area-inset-bottom));margin:0;padding:10px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 15px 40px #17211d24;flex-wrap:wrap;max-height:48vh;overflow:auto}
+  .nav.mobile-open button{flex:1 1 42%;white-space:normal;text-align:left}
+  .mobile-dock{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;position:fixed;z-index:60;bottom:0;left:0;right:0;padding:8px 6px calc(8px + env(safe-area-inset-bottom));background:#ffffffef;backdrop-filter:blur(18px);border-top:1px solid var(--line);box-shadow:0 -8px 24px #17211d0a}
+  .mobile-dock button{border:0;background:transparent;border-radius:12px;min-width:0;min-height:48px;padding:4px 2px;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+  .mobile-dock button span{font-size:19px;line-height:1.1;font-weight:800}.mobile-dock button small{font-size:10px;font-weight:700}
+  .mobile-dock button.active{color:var(--green);background:var(--green2)}
+  .mobile-more-backdrop.open{display:block;position:fixed;inset:0;z-index:70;background:#10201855}
+  .mobile-more-panel.open{display:block;position:fixed;z-index:71;left:10px;right:10px;bottom:calc(70px + env(safe-area-inset-bottom));padding:16px;background:white;border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 50px #17211d30}
+  .mobile-more-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+  .mobile-more-grid button{min-height:48px;text-align:left;border:1px solid var(--line);background:#f9fbf9;border-radius:12px;padding:10px;font-size:12px;font-weight:750;color:var(--ink)}
+  .grid,.split{grid-template-columns:minmax(0,1fr);gap:12px}
+  .panel{padding:15px;border-radius:17px;margin-bottom:12px}
+  .page-heading{display:block}.page-heading .btn{margin-top:10px}
+  .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .kpi{padding:12px;border-radius:14px}.kpi strong{font-size:19px}
+  .recipe-grid{grid-template-columns:minmax(0,1fr)}
+  .recipe{padding:15px}
+  .formline{grid-template-columns:minmax(0,1fr) 88px}
+  .formline button{grid-column:1/-1}
+  .row{gap:7px}
+  .row>*{max-width:100%}
+  .two{grid-template-columns:minmax(0,1fr)}
+  .items-head,.item{grid-template-columns:minmax(0,1fr) 54px 76px 28px;gap:4px}
+  .item input{min-width:0;padding:8px 5px;font-size:12px}
+  .items-head{font-size:9px}
+  .metric strong{font-size:19px}
+  .chart-bars{gap:5px}.chart-col em{font-size:8px}
+  .footer{padding-bottom:20px}
+}
+@media(max-width:380px){
+  .hero h2{font-size:28px}
+  .mobile-more-grid{grid-template-columns:1fr}
+  .kpi strong{font-size:17px}
+  .items-head,.item{grid-template-columns:minmax(0,1fr) 48px 68px 26px}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><div class="logo">M</div><div><h1>Me Sirve</h1><p>Tu casa, mejor organizada.</p></div></div><div class="header-actions"><button class="btn secondary install-btn" id="installApp" type="button">＋ Instalar app</button><div class="pill">Tus datos quedan en este navegador</div></div></header>
+<section class="hero"><div><div class="eyebrow">Menos desperdicio, más control</div><h2>Compra con memoria.<br>Cocina con lo que hay.</h2><p>Guarda tus boletas, revisa cuánto gastas y encuentra ideas de comida usando los ingredientes que realmente tienes.</p></div><div class="hero-stat"><small>Gasto guardado en este navegador</small><strong id="heroSpent">$0</strong><small id="heroReceipts">0 boletas registradas</small></div></section>
+<nav class="nav"><button class="active" data-page="inicio">⌂ Inicio</button><button data-page="boletas">▤ Mis boletas</button><button data-page="despensa">▦ Despensa</button><button data-page="lista">☑ Lista de compras</button><button data-page="cocina">♨ ¿Qué cocino?</button><button data-page="plan">▣ Plan semanal</button><button data-page="historial">◷ Historial</button><button data-page="precios">⇄ Comparar precios</button><button data-page="analisis">↗ Análisis</button><button data-page="presupuesto">$ Presupuesto</button><button data-page="ajustes">⚙ Datos y privacidad</button></nav>
+
+<section class="page active" id="page-inicio">
+  <div class="page-heading"><div><h2>Hola, bienvenido a Me Sirve</h2><p>Tu centro de control para comprar mejor, cocinar y cuidar el presupuesto.</p></div><button class="btn" data-goto="boletas">＋ Registrar compra</button></div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-icon">🧾</div><small>Gasto registrado este mes</small><strong id="homeMonthSpend">$0</strong><div class="kpi-foot" id="homeMonthCount">0 compras este mes</div></div>
+    <div class="kpi"><div class="kpi-icon">🧺</div><small>Productos en despensa</small><strong id="homePantryCount">0</strong><div class="kpi-foot">Productos que registraste</div></div>
+    <div class="kpi"><div class="kpi-icon">🛒</div><small>Pendientes de compra</small><strong id="homeListCount">0</strong><div class="kpi-foot">En tu lista de compras</div></div>
+    <div class="kpi"><div class="kpi-icon">💰</div><small>Presupuesto disponible</small><strong id="homeBudgetLeft">$0</strong><div class="kpi-foot">Según tus compras del mes</div></div>
+  </div>
+  <div class="split">
+    <div class="panel"><div class="spread"><div><h3>Actividad reciente</h3><p class="muted small">Tus últimas compras registradas.</p></div><button class="btn ghost" data-goto="historial">Ver historial</button></div><div id="homeRecent"></div></div>
+    <div class="panel"><h3>Tu siguiente paso</h3><p class="muted small">Atajos para mantener tu casa organizada.</p>
+      <div class="data-row"><div class="main"><strong>📷 Registrar una boleta</strong><div class="sub">Guarda los productos y sus precios.</div></div><button class="btn secondary" data-goto="boletas">Abrir</button></div>
+      <div class="data-row"><div class="main"><strong>🥕 Revisar la despensa</strong><div class="sub">Controla lo que tienes antes de comprar.</div></div><button class="btn secondary" data-goto="despensa">Abrir</button></div>
+      <div class="data-row"><div class="main"><strong>🍲 Encontrar una receta</strong><div class="sub">Busca ideas con tus ingredientes.</div></div><button class="btn secondary" data-goto="cocina">Abrir</button></div>
+      <div class="tip" id="homeTip">Consejo: registra las compras para que los análisis sean más útiles.</div>
+    </div>
+  </div>
+</section>
+<section class="page" id="page-despensa">
+  <div class="page-heading"><div><h2>Mi despensa</h2><p>Registra lo que tienes, las cantidades y cuándo conviene usarlo.</p></div><span class="chip"><span class="status-dot"></span>Control manual</span></div>
+  <div class="grid">
+    <div class="panel"><h3>Agregar producto</h3><p class="muted small">Agrega alimentos que tienes en casa. Las cantidades las controlas tú.</p>
+      <div class="field"><label>Producto</label><input id="pantryName" placeholder="Ej. arroz, tomates, leche"></div>
+      <div class="two" style="margin-top:10px"><div class="field"><label>Cantidad</label><input id="pantryQty" type="number" min="0.1" step="0.1" value="1"></div><div class="field"><label>Unidad</label><select id="pantryUnit"><option>unidad(es)</option><option>kg</option><option>g</option><option>litro(s)</option><option>ml</option><option>paquete(s)</option><option>lata(s)</option></select></div></div>
+      <div class="two" style="margin-top:10px"><div class="field"><label>Fecha de vencimiento (opcional)</label><input id="pantryExpiry" type="date"></div><div class="field"><label>Categoría</label><select id="pantryCategory"><option>Despensa</option><option>Frutas y verduras</option><option>Lácteos</option><option>Carnes y pescados</option><option>Congelados</option><option>Aseo</option><option>Otros</option></select></div></div>
+      <button class="btn" id="addPantry" style="margin-top:14px;width:100%">Agregar a mi despensa</button>
+      <div class="notice">Los productos comprados no se descuentan automáticamente al cocinar; así evitas que la app asuma cantidades que no conoce.</div>
+    </div>
+    <div class="panel"><div class="spread"><div><h3>Lo que tienes</h3><p class="muted small">Busca y revisa tus productos.</p></div><strong id="pantryCountBadge">0</strong></div><input id="pantrySearch" placeholder="Buscar en la despensa…"><div id="pantryList" style="margin-top:10px"></div></div>
+  </div>
+  <div class="panel"><div class="spread"><div><h3>Por vencer</h3><p class="muted small">Productos con fecha de vencimiento registrada.</p></div><span class="chip">Fechas ingresadas por ti</span></div><div id="expiryList"></div></div>
+</section>
+<section class="page" id="page-lista">
+  <div class="page-heading"><div><h2>Lista de compras</h2><p>Organiza lo que necesitas antes de ir al supermercado.</p></div><button class="btn ghost" id="clearChecked">Limpiar comprados</button></div>
+  <div class="split"><div class="panel"><h3>Agregar a la lista</h3><div class="formline" style="margin-top:12px"><div class="field"><label>Producto</label><input id="listName" placeholder="Ej. leche, papel higiénico"></div><div class="field"><label>Cantidad</label><input id="listQty" value="1" min="1" type="number"></div><button class="btn" id="addListItem">＋ Agregar</button></div><div class="two" style="margin-top:10px"><div class="field"><label>Presupuesto estimado por producto ($)</label><input id="listPrice" type="number" min="0" placeholder="Opcional"></div><div class="field"><label>Sección</label><select id="listCategory"><option>General</option><option>Frutas y verduras</option><option>Despensa</option><option>Lácteos</option><option>Carnes y pescados</option><option>Aseo</option><option>Otros</option></select></div></div><p class="muted small">Estimaciones manuales: no son precios de supermercado en tiempo real.</p></div>
+  <div class="panel"><h3>Resumen de la lista</h3><div class="totals"><div class="metric"><small>Pendientes</small><strong id="listPendingCount">0</strong></div><div class="metric"><small>Estimación total</small><strong id="listEstimate">$0</strong></div></div><div class="callout"><strong>Consejo</strong><span class="small">Marca cada producto a medida que lo agregas al carro.</span></div></div></div>
+  <div class="panel"><div class="spread"><div><h3>Tu lista</h3><p class="muted small">Puedes marcar los artículos como comprados o eliminarlos.</p></div><select id="listFilter" style="max-width:180px"><option value="pending">Pendientes primero</option><option value="all">Todos</option><option value="checked">Comprados</option></select></div><div id="shoppingList"></div></div>
+</section>
+<section class="page" id="page-analisis">
+  <div class="page-heading"><div><h2>Análisis de gastos</h2><p>Entiende dónde se va tu dinero con las compras que has registrado.</p></div><span class="chip">Basado en tus datos guardados</span></div>
+  <div class="kpi-grid"><div class="kpi"><div class="kpi-icon">📈</div><small>Gasto este mes</small><strong id="analysisMonth">$0</strong><div class="kpi-foot">Compras registradas</div></div><div class="kpi"><div class="kpi-icon">🏪</div><small>Comercio frecuente</small><strong id="analysisStore">—</strong><div class="kpi-foot">Por cantidad de boletas</div></div><div class="kpi"><div class="kpi-icon">🧾</div><small>Compra promedio</small><strong id="analysisAverage">$0</strong><div class="kpi-foot">Promedio por boleta</div></div><div class="kpi"><div class="kpi-icon">📦</div><small>Productos registrados</small><strong id="analysisProducts">0</strong><div class="kpi-foot">Líneas de productos</div></div></div>
+  <div class="split"><div class="panel"><h3>Gasto de los últimos 6 meses</h3><p class="muted small">Suma de boletas según la fecha guardada.</p><div id="monthlyChart" class="chart-bars"></div></div><div class="panel"><h3>Productos más registrados</h3><p class="muted small">Según las líneas de tus boletas, no por cantidad consumida.</p><div id="topProducts"></div></div></div>
+  <div class="panel"><h3>Gasto por comercio</h3><div id="storeBreakdown"></div></div>
+</section>
+
+<section class="page" id="page-precios">
+ <div class="page-heading"><div><h2>Comparador de precios</h2><p>Compara lo que has pagado por el mismo producto en tus boletas registradas.</p></div><span class="chip">Tus compras reales</span></div>
+ <div class="panel"><h3>Buscar un producto</h3><p class="muted small">Escribe parte del nombre del producto tal como aparece en tus boletas.</p><div class="row" style="margin-top:12px"><div style="flex:1;min-width:220px"><input id="priceSearch" placeholder="Ej. leche, arroz, detergente"></div><button class="btn" id="searchPrices">Comparar</button></div><div class="notice">La comparación usa los precios que tú registraste. Si los nombres o tamaños de envase son distintos, revisa que realmente sean productos equivalentes. No consulta precios en vivo de supermercados.</div></div>
+ <div class="split"><div class="panel"><h3>Precio más reciente por comercio</h3><div id="priceComparison"></div></div><div class="panel"><h3>Historial de ese producto</h3><div id="priceTimeline"></div></div></div>
+</section>
+<section class="page" id="page-plan">
+ <div class="page-heading"><div><h2>Plan semanal de comidas</h2><p>Organiza qué cocinar y crea una lista con los ingredientes que te falten.</p></div><button class="btn secondary" id="planMissingList">Crear lista de faltantes</button></div>
+ <div class="panel"><h3>Planificar una comida</h3><div class="two" style="margin-top:12px"><div class="field"><label>Día</label><input type="date" id="planDate"></div><div class="field"><label>Receta</label><select id="planRecipe"></select></div></div><div class="two" style="margin-top:10px"><div class="field"><label>Porciones</label><input type="number" id="planServings" value="2" min="1" max="20"></div><div class="field"><label>Momento</label><select id="planMeal"><option>Almuerzo</option><option>Cena</option><option>Desayuno</option><option>Colación</option></select></div></div><button class="btn" id="addPlan" style="margin-top:14px">＋ Agregar al plan</button></div>
+ <div class="panel"><div class="spread"><div><h3>Comidas planificadas</h3><p class="muted small">Puedes eliminar cualquier planificación.</p></div><select id="planRange" style="max-width:180px"><option value="7">Próximos 7 días</option><option value="14">Próximos 14 días</option><option value="all">Todas</option></select></div><div id="mealPlanList"></div></div>
+</section>
+
+<section class="page" id="page-ajustes">
+  <div class="page-heading"><div><h2>Datos y privacidad</h2><p>Administra una copia de seguridad de tus registros.</p></div></div>
+  <div class="split"><div class="panel"><h3>Respaldo de tus datos</h3><p class="muted small">Exporta un archivo para guardar tus compras, despensa, lista y presupuesto. Guárdalo en un lugar privado.</p><button class="btn" id="backupExport">Descargar copia de seguridad (.json)</button><div style="height:16px"></div><div class="field"><label>Restaurar desde una copia .json</label><input type="file" id="backupFile" accept=".json,application/json"></div><button class="btn secondary" id="backupImport" style="margin-top:10px">Restaurar copia</button><div class="notice">Restaurar reemplaza los datos locales actuales por los del archivo seleccionado. Exporta una copia antes de hacerlo.</div></div>
+  <div class="panel"><h3>Privacidad y almacenamiento</h3><div class="privacy"><span>🔒</span><div><strong>Datos locales en este navegador</strong><br>Este prototipo no tiene cuenta ni sincronización en la nube. Si borras los datos del navegador o cambias de dispositivo, puedes perder los registros si no tienes una copia.</div></div><div class="data-row"><div class="main"><strong>Registros de compras</strong><div class="sub" id="settingsReceiptCount">0 boletas</div></div></div><div class="data-row"><div class="main"><strong>Productos de despensa</strong><div class="sub" id="settingsPantryCount">0 productos</div></div></div><button class="btn danger" id="clearAllData" style="margin-top:14px">Borrar todos mis datos</button></div></div>
+</section>
+
+<section class="page" id="page-boletas"><div class="grid"><main>
+<div class="panel"><h3>Registrar una compra</h3><p class="muted small">Sube una foto de la boleta o ingresa los productos manualmente. Revisa los datos antes de guardar.</p>
+<div class="upload"><div class="bigicon">🧾</div><strong>Fotografía o selecciona tu boleta</strong><p class="muted small">Puedes usar la cámara del teléfono o elegir una imagen.</p><input id="receiptImage" type="file" accept="image/*" capture="environment"><div id="ocrStatus" class="small muted" style="margin-top:8px">La lectura automática necesita conexión a internet para cargar el motor OCR.</div><img id="receiptPreview" class="hide" style="max-width:100%;max-height:240px;object-fit:contain;margin-top:12px;border-radius:10px" alt="Vista previa de boleta"></div>
+<div class="two" style="margin-top:14px"><div class="field"><label>Comercio</label><input id="store" placeholder="Ej. Lider, Unimarc, feria"></div><div class="field"><label>Fecha de compra</label><input id="date" type="date"></div></div>
+<div class="spread" style="margin-top:20px"><div><h3 style="font-size:15px">Productos de la boleta</h3><p class="muted small">Puedes corregir nombre, cantidad y precio.</p></div><button class="btn secondary" id="addItem">＋ Producto</button></div>
+<div class="items-head"><span>Producto</span><span>Cant.</span><span>Precio $</span><span></span></div><div id="items"></div>
+<div class="spread" style="margin-top:16px"><span class="muted">Total calculado</span><strong id="receiptTotal" style="font-size:24px">$0</strong></div>
+<div class="row" style="margin-top:15px"><button class="btn" id="saveReceipt">Guardar compra</button><button class="btn ghost" id="clearForm">Limpiar formulario</button></div><label class="row small muted" style="margin-top:12px;align-items:flex-start"><input type="checkbox" id="addToPantryOnSave" style="width:16px;margin-top:3px"> Agregar estos productos a mi despensa al guardar (revisa las cantidades después).</label>
+<div class="notice">Esta versión guarda la información en este navegador, no en una cuenta en la nube. La lectura OCR no se da por correcta sin revisión.</div>
+</div>
+</main><aside>
+<div class="panel"><h3>Últimas compras</h3><p class="muted small">Tus registros más recientes.</p><div id="recentReceipts"></div><button class="btn ghost" style="width:100%;margin-top:8px" data-goto="historial">Ver historial completo</button></div>
+<div class="panel"><h3>Resumen rápido</h3><div class="totals"><div class="metric"><small>Compras guardadas</small><strong id="countReceipts">0</strong></div><div class="metric"><small>Total registrado</small><strong id="totalReceipts">$0</strong></div></div><p class="muted small">Solo suma las boletas que guardes aquí.</p></div>
+</aside></div></section>
+<section class="page" id="page-historial"><div class="panel"><div class="spread"><div><h3>Historial de compras</h3><p class="muted small">Busca por comercio o revisa tus gastos registrados.</p></div><button class="btn ghost" id="exportCsv">Exportar CSV</button></div><div class="history-controls"><input id="historySearch" placeholder="Buscar comercio o producto…"><select id="historyPeriod"><option value="all">Todo el historial</option><option value="30">Últimos 30 días</option><option value="7">Últimos 7 días</option></select></div><div id="historyList"></div></div></section>
+<section class="page" id="page-cocina"><div class="panel"><div class="spread"><div><h3>¿Qué cocino hoy?</h3><p class="muted small">Escribe los ingredientes que tienes. Las recetas se filtran por los ingredientes que realmente ingresaste.</p></div><div class="row"><button class="btn secondary" id="usePantryForRecipes">Usar mi despensa</button><button class="btn ghost" id="clearIngredients">Limpiar</button></div></div><div class="row" style="margin-top:14px"><div style="flex:1;min-width:220px"><input id="ingredientInput" placeholder="Ej. arroz, tomate" aria-label="Ingredientes disponibles"></div><button class="btn" id="searchRecipes">Buscar ideas</button></div><p class="muted small" id="recipeMatchSummary" style="margin-top:12px">Escribe al menos un ingrediente y pulsa Buscar ideas.</p><div class="notice">Solo se mostrarán recetas cuyos ingredientes necesarios estén todos en tu lista. Los ingredientes opcionales se indicarán aparte y no se tratarán como si ya los tuvieras.</div></div><div id="recipes" class="recipe-grid"></div></section>
+<section class="page" id="page-presupuesto"><div class="grid"><div class="panel"><h3>Tu presupuesto</h3><p class="muted small">Define un monto mensual y compáralo con las compras que registraste.</p><div class="field"><label>Presupuesto mensual en pesos</label><input type="number" id="budgetInput" min="0" step="5000" value="200000"></div><div class="totals"><div class="metric"><small>Gasto registrado</small><strong id="budgetSpent">$0</strong></div><div class="metric"><small>Saldo estimado</small><strong id="budgetLeft">$200.000</strong></div></div><div class="bar"><span id="budgetBar"></span></div><p id="budgetText" class="muted small">Registra una compra para empezar.</p></div><div class="panel"><h3>Consejos para usar Me Sirve</h3><p>• Guarda cada boleta después de revisar sus productos.</p><p>• Usa el historial para comparar tus compras a lo largo del tiempo.</p><p>• En ¿Qué cocino?, marca únicamente los ingredientes que tienes disponibles.</p><p class="muted small">Los registros de esta vista previa no se sincronizan entre dispositivos ni se respaldan automáticamente.</p></div></div></section>
+<div class="footer">Me Sirve · Prototipo local ampliado · Tus datos permanecen en este navegador.</div></div><div class="toast" id="toast"></div>
+
+<nav class="mobile-dock" aria-label="Navegación rápida">
+  <button type="button" data-page="inicio"><span>⌂</span><small>Inicio</small></button>
+  <button type="button" data-page="boletas"><span>▤</span><small>Boletas</small></button>
+  <button type="button" data-page="cocina"><span>♨</span><small>Cocinar</small></button>
+  <button type="button" data-page="lista"><span>☑</span><small>Lista</small></button>
+  <button type="button" data-more="1"><span>•••</span><small>Más</small></button>
+</nav>
+<div class="mobile-more-backdrop" id="mobileMoreBackdrop"></div>
+<div class="mobile-more-panel" id="mobileMorePanel" aria-label="Más secciones">
+  <div class="spread"><strong>Más de Me Sirve</strong><button class="icon-btn" id="closeMobileMore" type="button">×</button></div>
+  <div class="mobile-more-grid">
+    <button data-page="despensa">▦ Despensa</button><button data-page="plan">▣ Plan semanal</button>
+    <button data-page="historial">◷ Historial</button><button data-page="precios">⇄ Comparar precios</button>
+    <button data-page="analisis">↗ Análisis</button><button data-page="presupuesto">$ Presupuesto</button>
+    <button data-page="ajustes">⚙ Datos y privacidad</button>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id),money=n=>new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0}).format(n||0);
+const KEY='me-sirve-preview-v1';
+let db=loadDB(),draft=[];
+const ingredientNames=['arroz','tomate','huevo','papa','cebolla','zanahoria','fideos','ajo','pollo','lentejas','porotos','atún','leche','queso','pan','avena','plátano','manzana','lechuga','limón','harina','aceite','sal','pimienta'];
+const recipes=[
+{name:'Arroz con tomate salteado',emoji:'🍅',time:'15 min',need:['arroz','tomate'],optional:['aceite','sal','cebolla','ajo'],steps:'Cocina el arroz y corta el tomate en trozos. Mézclalos o sirve el tomate encima. Si tienes aceite, sal o ajo, puedes añadirlos, pero no son obligatorios.'},
+{name:'Ensalada de tomate y cebolla',emoji:'🥗',time:'8 min',need:['tomate','cebolla'],optional:['aceite','sal','limón','lechuga'],steps:'Corta tomate y cebolla. Aliña con aceite, sal y limón si tienes.'},
+{name:'Papas doradas al ajo',emoji:'🥔',time:'25 min',need:['papa','ajo'],optional:['aceite','sal','pimienta'],steps:'Corta las papas en cubos, mezcla con ajo, aceite y sal; cocina en sartén hasta dorar.'},
+{name:'Arroz con huevo',emoji:'🍳',time:'15 min',need:['arroz','huevo'],optional:['aceite','sal','cebolla'],steps:'Prepara el arroz y cocina el huevo a tu gusto. Sirve junto y sazona.'},
+{name:'Fideos al tomate',emoji:'🍝',time:'20 min',need:['fideos','tomate'],optional:['aceite','sal','ajo','queso'],steps:'Cuece los fideos. Cocina el tomate con aceite, sal y ajo si tienes; mezcla.'},
+{name:'Lentejas guisadas sencillas',emoji:'🥣',time:'35 min',need:['lentejas','cebolla','zanahoria'],optional:['sal','ajo','papa','aceite'],steps:'Cocina las lentejas con verduras picadas y sal hasta que estén blandas.'},
+{name:'Ensalada de atún',emoji:'🥗',time:'10 min',need:['atún','tomate','cebolla'],optional:['lechuga','limón','aceite'],steps:'Escurre el atún y mézclalo con tomate y cebolla picados.'},
+{name:'Avena con plátano',emoji:'🥣',time:'7 min',need:['avena','leche','plátano'],optional:[],steps:'Calienta la avena con leche y sirve con plátano en rodajas.'},
+{name:'Pan con huevo',emoji:'🍞',time:'8 min',need:['pan','huevo'],optional:['tomate','queso'],steps:'Cocina el huevo y sírvelo sobre el pan. Agrega tomate o queso si tienes.'},
+{name:'Porotos salteados con tomate',emoji:'🫘',time:'15 min',need:['porotos','tomate','cebolla'],optional:['aceite','ajo','sal'],steps:'Si los porotos ya están cocidos, saltéalos con tomate y cebolla hasta integrar.'}
+];
+
+// Recetario ampliado: preparaciones sencillas que sí se pueden hacer con los ingredientes declarados.
+recipes.push(
+{name:'Arroz con papas doradas',emoji:'🍚',time:'25 min',need:['arroz','papa'],optional:['aceite','sal','ajo','cebolla'],steps:'Cocina el arroz. Corta las papas en cubos o láminas y dóralas en una sartén con un poco de aceite si tienes. Si no tienes aceite, puedes cocerlas y servirlas junto al arroz.'},
+{name:'Arroz con papas fritas',emoji:'🍟',time:'25 min',need:['arroz','papa'],optional:['aceite','sal'],steps:'Prepara el arroz. Corta las papas en bastones y fríelas si tienes aceite; también puedes dorarlas en sartén o cocerlas. Sirve las papas junto al arroz.'},
+{name:'Guiso simple de arroz y papa',emoji:'🥘',time:'30 min',need:['arroz','papa'],optional:['tomate','cebolla','ajo','aceite','sal'],steps:'Corta la papa en cubos pequeños y cuécela en agua hasta que empiece a ablandarse. Añade el arroz y suficiente agua para que ambos terminen de cocerse. Si tienes tomate o cebolla, puedes incorporarlos.'},
+{name:'Arroz blanco',emoji:'🍚',time:'18 min',need:['arroz'],optional:['aceite','sal','ajo'],steps:'Enjuaga el arroz si acostumbras hacerlo. Cuécelo con agua hasta que esté blando y se haya absorbido el líquido.'},
+{name:'Papas cocidas',emoji:'🥔',time:'20 min',need:['papa'],optional:['sal','aceite','limón'],steps:'Lava las papas, córtalas si quieres acelerar la cocción y hiérvelas hasta que estén blandas. Escurre y sirve.'},
+{name:'Papas salteadas',emoji:'🥔',time:'20 min',need:['papa'],optional:['aceite','sal','ajo','cebolla'],steps:'Corta las papas en cubos pequeños. Cuécelas primero o dóralas en una sartén con aceite si tienes. Condimenta con los ingredientes disponibles.'},
+{name:'Puré de papas sencillo',emoji:'🥔',time:'25 min',need:['papa'],optional:['leche','mantequilla','sal','aceite'],steps:'Cuece las papas hasta que estén blandas y muélelas. Agrega un poco de leche o mantequilla si tienes; si no, usa un poco del agua de cocción.'},
+{name:'Tomate con arroz',emoji:'🍅',time:'18 min',need:['tomate','arroz'],optional:['aceite','sal','ajo','cebolla'],steps:'Cocina el arroz. Pica el tomate y sírvelo mezclado con el arroz o caliéntalo en una sartén para hacer una salsa sencilla.'},
+{name:'Arroz con cebolla',emoji:'🧅',time:'20 min',need:['arroz','cebolla'],optional:['aceite','sal','ajo'],steps:'Pica la cebolla y cocínala en una sartén con aceite si tienes. Agrega el arroz cocido y mezcla; también puedes servir la cebolla encima.'},
+{name:'Arroz con zanahoria',emoji:'🥕',time:'20 min',need:['arroz','zanahoria'],optional:['aceite','sal','cebolla'],steps:'Ralla o corta fina la zanahoria. Cuécela con el arroz o saltéala y mézclala con el arroz ya preparado.'},
+{name:'Papas con tomate',emoji:'🍅',time:'20 min',need:['papa','tomate'],optional:['aceite','sal','cebolla','ajo'],steps:'Cuece las papas en cubos. Pica el tomate y mézclalo con las papas; si tienes sartén, puedes calentarlo todo unos minutos.'},
+{name:'Tortilla de papas',emoji:'🍳',time:'25 min',need:['papa','huevo'],optional:['cebolla','aceite','sal'],steps:'Cuece o cocina las papas en láminas. Mézclalas con huevo batido y cocina la mezcla en una sartén hasta que cuaje por ambos lados.'},
+{name:'Huevos con tomate',emoji:'🍳',time:'12 min',need:['huevo','tomate'],optional:['aceite','sal','cebolla'],steps:'Pica el tomate y caliéntalo en una sartén. Agrega los huevos y cocina hasta que estén cuajados.'},
+{name:'Ensalada de papa y tomate',emoji:'🥗',time:'20 min',need:['papa','tomate'],optional:['aceite','sal','limón','cebolla'],steps:'Cuece las papas, deja que se entibien y córtalas. Mezcla con tomate picado y aliña con lo que tengas.'},
+{name:'Fideos con ajo',emoji:'🍝',time:'15 min',need:['fideos','ajo'],optional:['aceite','sal','queso'],steps:'Cuece los fideos. Pica el ajo y saltéalo brevemente con aceite si tienes; mezcla con los fideos y un poco de agua de cocción.'},
+{name:'Fideos con queso',emoji:'🧀',time:'15 min',need:['fideos','queso'],optional:['leche','mantequilla','sal'],steps:'Cuece los fideos y mézclalos con queso rallado o picado mientras están calientes para que se ablande.'},
+{name:'Pan con tomate',emoji:'🍞',time:'5 min',need:['pan','tomate'],optional:['aceite','sal','queso'],steps:'Corta el tomate y ponlo sobre el pan. Si tienes queso, puedes agregarlo y calentar el pan.'},
+{name:'Pan con queso',emoji:'🥪',time:'5 min',need:['pan','queso'],optional:['tomate','orégano'],steps:'Pon el queso sobre el pan. Puedes comerlo así o calentarlo hasta que el queso se ablande.'},
+{name:'Avena cocida',emoji:'🥣',time:'8 min',need:['avena'],optional:['leche','plátano','manzana','canela'],steps:'Cuece la avena con agua o leche si tienes, revolviendo hasta que alcance la textura que te guste.'},
+{name:'Ensalada de tomate',emoji:'🥗',time:'5 min',need:['tomate'],optional:['cebolla','aceite','sal','limón'],steps:'Lava y corta el tomate. Aliña con los condimentos que tengas disponibles.'},
+{name:'Ensalada de lechuga y tomate',emoji:'🥗',time:'7 min',need:['lechuga','tomate'],optional:['aceite','sal','limón','cebolla'],steps:'Lava y corta la lechuga y el tomate. Mezcla y aliña con lo que tengas.'},
+{name:'Pollo con papas',emoji:'🍗',time:'35 min',need:['pollo','papa'],optional:['cebolla','ajo','aceite','sal'],steps:'Corta las papas y cocina el pollo completamente en una olla o sartén con agua y los condimentos que tengas. Añade las papas hasta que estén blandas.'},
+{name:'Pollo con arroz',emoji:'🍗',time:'30 min',need:['pollo','arroz'],optional:['cebolla','ajo','aceite','sal'],steps:'Cocina el pollo completamente. Prepara el arroz aparte y sirve junto, usando los condimentos disponibles.'},
+{name:'Lentejas con arroz',emoji:'🥣',time:'40 min',need:['lentejas','arroz'],optional:['cebolla','zanahoria','ajo','sal'],steps:'Cuece las lentejas hasta que estén blandas y prepara el arroz aparte. Sirve juntos; si tienes verduras, puedes incorporarlas a las lentejas.'},
+{name:'Porotos con arroz',emoji:'🫘',time:'20 min',need:['porotos','arroz'],optional:['cebolla','tomate','ajo','sal'],steps:'Si los porotos ya están cocidos, caliéntalos y sírvelos con arroz. Si están secos, necesitan remojo y cocción previa.'},
+{name:'Arroz con atún',emoji:'🐟',time:'15 min',need:['arroz','atún'],optional:['tomate','mayonesa','limón','cebolla'],steps:'Cocina el arroz y mézclalo con el atún escurrido. Puedes comerlo tibio o frío y agregar las verduras que tengas.'},
+{name:'Papa rellena sencilla con queso',emoji:'🥔',time:'30 min',need:['papa','queso'],optional:['sal','aceite'],steps:'Cuece y muele las papas, forma porciones y coloca queso en el centro. Puedes dorarlas en sartén o servirlas como puré con queso.'}
+);
+
+function loadDB(){try{const d=JSON.parse(localStorage.getItem(KEY))||{};return {receipts:[],budget:200000,ingredients:[],pantry:[],shopping:[],plans:[],...d}}catch(e){return{receipts:[],budget:200000,ingredients:[],pantry:[],shopping:[],plans:[]}}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function toast(t){const el=$('toast');el.textContent=t;el.style.display='block';setTimeout(()=>el.style.display='none',2500)}
+function nav(p){document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));document.querySelectorAll('.page').forEach(s=>s.classList.toggle('active',s.id==='page-'+p));if(p==='cocina')renderRecipes();if(p==='historial')renderHistory();if(p==='despensa')renderPantry();if(p==='lista')renderShopping();if(p==='analisis')renderAnalysis();if(p==='inicio')renderHome();if(p==='ajustes')renderSettings()}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>nav(b.dataset.page));
+document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>nav(b.dataset.goto));
+function blankItem(){return {name:'',qty:1,price:0}}
+function addDraft(item=blankItem()){draft.push(item);renderDraft()}
+function renderDraft(){const root=$('items');root.innerHTML='';draft.forEach((it,i)=>{const row=document.createElement('div');row.className='item';row.innerHTML=`<input aria-label="Nombre producto" placeholder="Ej. Arroz 1 kg" value="${esc(it.name)}" data-i="${i}" data-k="name"><input aria-label="Cantidad" type="number" min="1" step="1" value="${it.qty}" data-i="${i}" data-k="qty"><input aria-label="Precio" type="number" min="0" step="1" value="${it.price}" data-i="${i}" data-k="price"><button class="remove" title="Eliminar producto" data-remove="${i}">×</button>`;root.appendChild(row)});$('receiptTotal').textContent=money(draft.reduce((s,x)=>s+(Number(x.qty)||0)*(Number(x.price)||0),0))}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('items').addEventListener('input',e=>{const i=e.target.dataset.i,k=e.target.dataset.k;if(i===undefined)return;draft[i][k]=k==='name'?e.target.value:Number(e.target.value)||0;if(k!=='name')$('receiptTotal').textContent=money(draft.reduce((s,x)=>s+(Number(x.qty)||0)*(Number(x.price)||0),0))});
+$('items').addEventListener('click',e=>{if(e.target.dataset.remove!==undefined){draft.splice(Number(e.target.dataset.remove),1);renderDraft()}});
+$('addItem').onclick=()=>addDraft();
+$('clearForm').onclick=()=>{draft=[];addDraft();$('store').value='';$('date').value=today();$('receiptImage').value='';$('receiptPreview').classList.add('hide');$('ocrStatus').textContent='La lectura automática necesita conexión a internet para cargar el motor OCR.'};
+function today(){return new Date().toISOString().slice(0,10)}$('date').value=today();
+$('receiptImage').onchange=async e=>{
+  const f=e.target.files?.[0]; if(!f)return;
+  const img=$('receiptPreview'); img.src=URL.createObjectURL(f); img.classList.remove('hide');
+  const status=$('ocrStatus');
+  status.textContent='Foto cargada. Preparando lectura de la boleta…';
+  try {
+    if(!window.Tesseract){
+      status.textContent='Cargando lector de texto…';
+      await new Promise((resolve,reject)=>{
+        let finished=false;
+        const timer=setTimeout(()=>{if(!finished){finished=true;reject(new Error('La descarga del lector tardó demasiado.'))}},25000);
+        const loadScript=src=>{
+          const s=document.createElement('script'); s.src=src;
+          s.onload=()=>{if(!finished){finished=true;clearTimeout(timer);resolve()}};
+          s.onerror=()=>{
+            s.remove();
+            if(src.includes('jsdelivr')) loadScript('https://unpkg.com/tesseract.js@5/dist/tesseract.min.js');
+            else if(!finished){finished=true;clearTimeout(timer);reject(new Error('No se pudo cargar el lector OCR.'))}
+          };
+          document.head.appendChild(s);
+        };
+        loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js');
+      });
+    }
+    status.textContent='Mejorando la imagen para leer los productos…';
+    let source=f;
+    try {
+      const bitmap=await createImageBitmap(f);
+      const canvas=document.createElement('canvas');
+      const scale=Math.min(4,Math.max(2,Math.ceil(1800/Math.max(bitmap.width,bitmap.height))));
+      canvas.width=bitmap.width*scale; canvas.height=bitmap.height*scale;
+      const ctx=canvas.getContext('2d',{willReadFrequently:true});
+      ctx.fillStyle='#fff'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);
+      const pixels=ctx.getImageData(0,0,canvas.width,canvas.height);
+      for(let i=0;i<pixels.data.length;i+=4){
+        const gray=(pixels.data[i]*0.299+pixels.data[i+1]*0.587+pixels.data[i+2]*0.114);
+        const contrast=Math.max(0,Math.min(255,(gray-145)*1.55+145));
+        pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=contrast;
+      }
+      ctx.putImageData(pixels,0,0);
+      source=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
+      if(!source)source=f;
+      if(bitmap.close)bitmap.close();
+    } catch(prepError) { source=f; }
+    status.textContent='Leyendo la boleta… la primera lectura puede tardar un poco.';
+    let lastProgress=0;
+    const timeout=new Promise((_,reject)=>setTimeout(()=>reject(new Error('La descarga del idioma o la lectura tardó más de 75 segundos. Comprueba tu conexión y vuelve a intentarlo; no se guardó ningún producto automáticamente.')),75000));
+    const reading=Tesseract.recognize(source,'spa',{
+      // Use a stable Tesseract language-data host instead of relying on the package's implicit CDN.
+      langPath:'https://tessdata.projectnaptha.com/4.0.0',
+      gzip:true,
+      cacheMethod:'write',
+      logger:m=>{
+        const pct=Math.round((m.progress||0)*100);
+        if(m.status==='loading tesseract core')status.textContent='Preparando motor de lectura… '+(pct?pct+'%':'');
+        else if(m.status==='loading language traineddata')status.textContent='Descargando idioma español: '+pct+'%';
+        else if(m.status==='initializing api')status.textContent='Iniciando lector de boletas…';
+        else if(m.status==='recognizing text')status.textContent='Leyendo productos y precios: '+pct+'%';
+        if(pct>lastProgress)lastProgress=pct;
+      }
+    });
+    const result=await Promise.race([reading,timeout]);
+    const text=result?.data?.text||'';
+    status.textContent='Texto leído. Revisa los productos y precios detectados antes de guardar.';
+    const lines=text.split(/\n/).map(x=>x.replace(/\s+/g,' ').trim()).filter(Boolean);
+    if(!$('store').value){
+      const storeLine=lines.find(x=>/\bl[i1]der\b|jumbo|unimarc|santa isabel|tottus|acuenta|mayorista/i.test(x));
+      if(storeLine)$('store').value=/jumbo/i.test(storeLine)?'Jumbo':/unimarc/i.test(storeLine)?'Unimarc':/santa isabel/i.test(storeLine)?'Santa Isabel':/tottus/i.test(storeLine)?'Tottus':/acuenta/i.test(storeLine)?'aCuenta':/lider/i.test(storeLine)?'Lider':storeLine.slice(0,50);
+    }
+    const found=[];
+    for(const line of lines){
+      if(/total|subtotal|iva|efectivo|vuelto|descuento|pago|boleta|rut|fecha|tarjeta|ahorro|medio de pago|cambio/i.test(line))continue;
+      // Accept prices with optional currency symbol and thousands separators at the end of a line.
+      const m=line.match(/^(.{2,65}?)\s+(?:\$\s*)?(\d{1,3}(?:[.,]\d{3})+|\d{3,8})\s*$/);
+      if(!m)continue;
+      let name=m[1].replace(/^[\d\s.*#-]+/,'').replace(/[*#]/g,'').trim();
+      const rawPrice=m[2].replace(/[.,]/g,'');
+      const price=Number(rawPrice);
+      if(name.length>=2&&price>0&&price<10000000&&!found.some(x=>x.name.toLowerCase()===name.toLowerCase()&&x.price===price)){
+        found.push({name,qty:1,price});
+      }
+    }
+    if(found.length){
+      draft=found;renderDraft();
+      toast('Detecté '+found.length+' línea(s). Revisa los nombres y precios.');
+    } else {
+      toast('Leí la foto, pero no pude separar los productos con seguridad. Puedes agregarlos manualmente.');
+    }
+  } catch(err) {
+    status.textContent=(err?.message||'No se pudo completar la lectura automática.')+' Puedes ingresar los productos manualmente o seleccionar la foto otra vez.';
+  }
+}
+$('saveReceipt').onclick=()=>{const items=draft.filter(x=>x.name.trim()&&Number(x.price)>=0&&Number(x.qty)>0).map(x=>({name:x.name.trim(),qty:Number(x.qty),price:Number(x.price)}));if(!items.length){toast('Agrega al menos un producto con nombre.');return}const total=items.reduce((s,x)=>s+x.qty*x.price,0);if($('addToPantryOnSave').checked){db.pantry=db.pantry||[];items.forEach(it=>{const match=db.pantry.find(p=>normalizeIngredient(p.name)===normalizeIngredient(it.name));if(match)match.qty=Number(match.qty||0)+Number(it.qty||1);else db.pantry.push({id:Date.now()+db.pantry.length,name:it.name,qty:it.qty,unit:'unidad(es)',expiry:'',category:'Despensa'})})}db.receipts.unshift({id:Date.now(),store:$('store').value.trim()||'Comercio sin nombre',date:$('date').value||today(),items,total});persist();draft=[];addDraft();$('store').value='';$('date').value=today();$('receiptImage').value='';$('receiptPreview').classList.add('hide');$('ocrStatus').textContent='Compra guardada. Puedes registrar otra boleta.';nav('historial');toast('Compra guardada correctamente')};
+function renderRecent(){const root=$('recentReceipts');root.innerHTML='';if(!db.receipts.length){root.innerHTML='<div class="empty">Todavía no guardas compras.</div>';return}db.receipts.slice(0,3).forEach(r=>{const d=document.createElement('div');d.className='receipt';d.innerHTML=`<div class="spread"><h4>${esc(r.store)}</h4><strong>${money(r.total)}</strong></div><div class="ritems">${esc(r.date)} · ${r.items.length} productos</div>`;root.appendChild(d)})}
+function renderHistory(){const root=$('historyList');const q=$('historySearch').value.toLowerCase();const days=$('historyPeriod').value;const min=days==='all'?0:Date.now()-Number(days)*86400000;const list=db.receipts.filter(r=>new Date(r.date+'T23:59:59').getTime()>=min&&(`${r.store} ${r.items.map(i=>i.name).join(' ')}`).toLowerCase().includes(q));root.innerHTML='';if(!list.length){root.innerHTML='<div class="empty">No hay compras que coincidan con la búsqueda.</div>';return}list.forEach(r=>{const el=document.createElement('div');el.className='receipt';el.innerHTML=`<div class="spread"><div><h4>${esc(r.store)}</h4><span class="muted small">${esc(r.date)} · ${r.items.length} productos</span></div><strong>${money(r.total)}</strong></div><div class="ritems">${r.items.map(i=>`${esc(i.name)} (${i.qty} × ${money(i.price)})`).join(' · ')}</div><div class="row"><button class="btn ghost small" data-detail="${r.id}">Ver productos</button><button class="btn danger small" data-delete="${r.id}">Eliminar</button></div><div class="hide" id="detail-${r.id}"></div>`;root.appendChild(el)})}
+$('historySearch').oninput=renderHistory;$('historyPeriod').onchange=renderHistory;
+$('historyList').onclick=e=>{if(e.target.dataset.delete){const id=Number(e.target.dataset.delete);if(confirm('¿Eliminar esta compra del historial?')){db.receipts=db.receipts.filter(r=>r.id!==id);persist()}}if(e.target.dataset.detail){const r=db.receipts.find(x=>x.id===Number(e.target.dataset.detail));if(r){const el=$('detail-'+r.id);el.classList.toggle('hide');el.innerHTML=r.items.map(i=>`<p>${esc(i.name)} — ${i.qty} × ${money(i.price)} = <b>${money(i.qty*i.price)}</b></p>`).join('')}}};
+$('exportCsv').onclick=()=>{const rows=[['Fecha','Comercio','Producto','Cantidad','Precio unitario','Subtotal']];db.receipts.forEach(r=>r.items.forEach(i=>rows.push([r.date,r.store,i.name,i.qty,i.price,i.qty*i.price])));const csv=rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');download(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),'me-sirve-compras.csv')};
+function download(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u)}
+function normalizeIngredient(s){
+  s=String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+  const aliases={
+    'tomates':'tomate','arroz blanco':'arroz','papas':'papa','patatas':'papa','patata':'papa',
+    'huevos':'huevo','pasta':'fideos','fideo':'fideos','cebollas':'cebolla','zanahorias':'zanahoria',
+    'lenteja':'lentejas','poroto':'porotos','atun':'atún','platanos':'plátano','platano':'plátano',
+    'manzanas':'manzana','ajos':'ajo','limones':'limón','lechugas':'lechuga','quesos':'queso',
+    'panes':'pan','aceites':'aceite','dientes de ajo':'ajo','papas fritas':'papa',
+    'patatas fritas':'papa','tomate cherry':'tomate','arroz cocido':'arroz'
+  };
+  return aliases[s]||s;
+}
+function parseIngredientInput(){
+  const raw=$('ingredientInput').value||'';
+  const parts=raw.split(/,|;|\n|\s+y\s+/i).map(normalizeIngredient).filter(Boolean);
+  db.ingredients=[...new Set(parts)];
+  localStorage.setItem(KEY,JSON.stringify(db));
+  renderRecipes();
+}
+function renderRecipes(){
+  const root=$('recipes');
+  const available=db.ingredients||[];
+  const summary=$('recipeMatchSummary');
+  root.innerHTML='';
+  if(!available.length){
+    summary.textContent='Escribe al menos un ingrediente y pulsa Buscar ideas.';
+    root.innerHTML='<div class="panel empty" style="grid-column:1/-1">Por ejemplo, escribe “arroz y tomate”. No sugeriremos recetas que necesiten ingredientes que no hayas indicado.</div>';
+    return;
+  }
+  const matches=recipes.filter(r=>r.need.every(n=>available.includes(normalizeIngredient(n))));
+  summary.textContent=`Tienes ${available.length} ingrediente(s): ${available.join(', ')}. ${matches.length} receta(s) cumplen todos los ingredientes necesarios.`;
+  if(!matches.length){
+    root.innerHTML='<div class="panel empty" style="grid-column:1/-1">No encontré una receta exacta con esa combinación en el recetario local. Prueba también con ingredientes de tu despensa: el recetario se amplió con preparaciones sencillas y combinaciones habituales.</div>';
+    return;
+  }
+  matches.forEach(r=>{
+    const el=document.createElement('article');
+    el.className='recipe';
+    const optionalAvailable=r.optional.filter(n=>available.includes(normalizeIngredient(n)));
+    const optionalMissing=r.optional.filter(n=>!available.includes(normalizeIngredient(n)));
+    el.innerHTML=`<div class="emoji">${r.emoji}</div><h4>${esc(r.name)}</h4><p>⏱ ${esc(r.time)} · Ingredientes necesarios completos</p><div>${r.need.map(n=>`<span class="tag">${esc(n)}</span>`).join('')}</div><p style="margin-top:10px">${esc(r.steps)}</p>${optionalAvailable.length?`<p><b>También tienes:</b> ${optionalAvailable.map(esc).join(', ')}</p>`:''}${optionalMissing.length?`<p class="muted small"><b>Opcionales (no necesarios):</b> ${optionalMissing.map(esc).join(', ')}</p>`:''}`;
+    root.appendChild(el);
+  });
+}
+$('searchRecipes').onclick=parseIngredientInput;
+$('ingredientInput').addEventListener('keydown',e=>{if(e.key==='Enter')parseIngredientInput()});
+$('clearIngredients').onclick=()=>{$('ingredientInput').value='';db.ingredients=[];localStorage.setItem(KEY,JSON.stringify(db));renderRecipes()};
+
+function monthKey(d=new Date()){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
+function monthLabel(key){const [y,m]=key.split('-').map(Number);return new Date(y,m-1,1).toLocaleDateString('es-CL',{month:'short'}).replace('.','')}
+function monthReceipts(key){return db.receipts.filter(r=>(r.date||'').slice(0,7)===key)}
+function renderHome(){
+ const m=monthReceipts(monthKey()),spent=m.reduce((s,r)=>s+Number(r.total||0),0),budget=Number(db.budget)||0;
+ $('homeMonthSpend').textContent=money(spent);$('homeMonthCount').textContent=m.length+' compra(s) este mes';
+ $('homePantryCount').textContent=(db.pantry||[]).length;
+ $('homeListCount').textContent=(db.shopping||[]).filter(x=>!x.checked).length;
+ $('homeBudgetLeft').textContent=money(budget-spent);
+ const root=$('homeRecent');root.innerHTML='';
+ const recent=[...db.receipts].sort((a,b)=>(b.date||'').localeCompare(a.date||'')).slice(0,4);
+ if(!recent.length)root.innerHTML='<div class="empty">Todavía no hay compras. Registra tu primera boleta para comenzar.</div>';
+ recent.forEach(r=>{const el=document.createElement('div');el.className='data-row';el.innerHTML=`<div class="main"><strong>${esc(r.store||'Comercio')}</strong><div class="sub">${esc(r.date||'')} · ${(r.items||[]).length} productos</div></div><strong>${money(r.total)}</strong>`;root.appendChild(el)});
+ $('homeTip').textContent=(db.pantry||[]).length?'Antes de comprar, revisa tu despensa y la lista pendiente.':db.receipts.length?'Agrega algunos productos a tu despensa para encontrar recetas según lo que tienes.':'Empieza guardando una boleta o registrando lo que ya tienes en casa.';
+}
+function renderPantry(){
+ const root=$('pantryList'),q=($('pantrySearch').value||'').toLowerCase();root.innerHTML='';
+ const items=(db.pantry||[]).filter(x=>(x.name+' '+x.category).toLowerCase().includes(q));
+ $('pantryCountBadge').textContent=(db.pantry||[]).length;
+ if(!items.length)root.innerHTML='<div class="empty">No hay productos que coincidan. Agrega un producto usando el formulario.</div>';
+ items.forEach(x=>{
+  const exp=x.expiry?new Date(x.expiry+'T12:00:00'):null,days=exp?Math.ceil((exp-new Date(new Date().toDateString()))/86400000):null;
+  const warning=days!==null?(days<0?'Vencimiento pasado':days===0?'Vence hoy':days<=3?'Vence en '+days+' día(s)':'Vence '+x.expiry):x.category||'Sin categoría';
+  const el=document.createElement('div');el.className='data-row';
+  el.innerHTML=`<div class="main"><strong>${esc(x.name)}</strong><div class="sub">${esc(x.qty)} ${esc(x.unit||'unidad(es)')} · ${esc(warning)}</div></div><div class="row"><button class="icon-btn" data-pantry-minus="${x.id}" title="Reducir cantidad">−</button><button class="icon-btn" data-pantry-plus="${x.id}" title="Aumentar cantidad">+</button><button class="icon-btn danger" data-pantry-delete="${x.id}" title="Eliminar">×</button></div>`;
+  root.appendChild(el);
+ });
+ const expiryRoot=$('expiryList');expiryRoot.innerHTML='';
+ const expiring=(db.pantry||[]).filter(x=>x.expiry).sort((a,b)=>a.expiry.localeCompare(b.expiry)).slice(0,8);
+ if(!expiring.length)expiryRoot.innerHTML='<div class="empty">No has agregado fechas de vencimiento.</div>';
+ expiring.forEach(x=>{const days=Math.ceil((new Date(x.expiry+'T12:00:00')-new Date(new Date().toDateString()))/86400000);const el=document.createElement('div');el.className='data-row';el.innerHTML=`<div class="main"><strong>${esc(x.name)}</strong><div class="sub">${days<0?'Fecha pasada':days===0?'Vence hoy':'Vence en '+days+' día(s)'} · ${esc(x.expiry)}</div></div><span class="tag ${days<=3?'missing':''}">${days<0?'Revisar':days<=3?'Pronto':'Registrado'}</span>`;expiryRoot.appendChild(el)});
+}
+$('addPantry').onclick=()=>{
+ const name=$('pantryName').value.trim(),qty=Number($('pantryQty').value);
+ if(!name||!qty||qty<0){toast('Ingresa un producto y una cantidad válida.');return}
+ const item={id:Date.now(),name,qty,unit:$('pantryUnit').value,expiry:$('pantryExpiry').value,category:$('pantryCategory').value};
+ db.pantry=db.pantry||[];db.pantry.unshift(item);persist();
+ $('pantryName').value='';$('pantryQty').value='1';$('pantryExpiry').value='';toast('Producto agregado a la despensa');
+};
+$('pantrySearch').oninput=renderPantry;
+$('pantryList').onclick=e=>{
+ const id=Number(e.target.dataset.pantryPlus||e.target.dataset.pantryMinus||e.target.dataset.pantryDelete);if(!id)return;
+ const item=(db.pantry||[]).find(x=>x.id===id);if(!item)return;
+ if(e.target.dataset.pantryDelete!==undefined){if(confirm('¿Eliminar '+item.name+' de la despensa?'))db.pantry=db.pantry.filter(x=>x.id!==id)}
+ else if(e.target.dataset.pantryPlus!==undefined)item.qty=Number(item.qty||0)+1;
+ else item.qty=Math.max(0,Number(item.qty||0)-1);
+ if(item.qty===0&&e.target.dataset.pantryMinus!==undefined){if(confirm('La cantidad llegó a cero. ¿Quitar el producto de la despensa?'))db.pantry=db.pantry.filter(x=>x.id!==id);else item.qty=0.1}
+ persist();
+};
+$('usePantryForRecipes').onclick=()=>{
+ const names=(db.pantry||[]).map(x=>normalizeIngredient(x.name));
+ if(!names.length){toast('Primero agrega productos a tu despensa.');nav('despensa');return}
+ db.ingredients=[...new Set(names)];$('ingredientInput').value=db.ingredients.join(', ');localStorage.setItem(KEY,JSON.stringify(db));renderRecipes();toast('Ingredientes de tu despensa cargados');
+};
+function renderShopping(){
+ const root=$('shoppingList');root.innerHTML='';const all=db.shopping||[],filter=$('listFilter').value;
+ const items=all.filter(x=>filter==='all'||(filter==='checked'?x.checked:!x.checked)).sort((a,b)=>Number(a.checked)-Number(b.checked));
+ $('listPendingCount').textContent=all.filter(x=>!x.checked).length;
+ $('listEstimate').textContent=money(all.filter(x=>!x.checked).reduce((s,x)=>s+Number(x.qty||1)*Number(x.price||0),0));
+ if(!items.length){root.innerHTML='<div class="empty">Tu lista está vacía en esta vista. Agrega productos que necesitas comprar.</div>';return}
+ const groups={};items.forEach(x=>(groups[x.category||'General']??=[]).push(x));
+ Object.entries(groups).forEach(([category,rows])=>{
+  const heading=document.createElement('div');heading.className='spread';heading.style.marginTop='16px';heading.innerHTML=`<strong>${esc(category)}</strong><span class="chip">${rows.length} artículo(s)</span>`;root.appendChild(heading);
+  rows.forEach(x=>{const el=document.createElement('div');el.className='data-row';el.innerHTML=`<input class="list-check" type="checkbox" data-list-toggle="${x.id}" ${x.checked?'checked':''} aria-label="Marcar ${esc(x.name)}"><div class="main"><strong style="${x.checked?'text-decoration:line-through;color:var(--muted)':''}">${esc(x.name)}</strong><div class="sub">Cantidad: ${esc(x.qty)}${x.price? ' · Estimado: '+money(x.qty*x.price):''}</div></div><button class="icon-btn danger" data-list-delete="${x.id}" title="Eliminar">×</button>`;root.appendChild(el)});
+ });
+}
+$('addListItem').onclick=()=>{
+ const name=$('listName').value.trim(),qty=Math.max(1,Number($('listQty').value)||1),price=Math.max(0,Number($('listPrice').value)||0);
+ if(!name){toast('Escribe el nombre del producto.');return}
+ db.shopping=db.shopping||[];db.shopping.unshift({id:Date.now(),name,qty,price,category:$('listCategory').value,checked:false});
+ persist();$('listName').value='';$('listQty').value='1';$('listPrice').value='';toast('Agregado a tu lista');
+};
+$('listName').addEventListener('keydown',e=>{if(e.key==='Enter')$('addListItem').click()});
+$('listFilter').onchange=renderShopping;
+$('shoppingList').onclick=e=>{
+ const toggle=e.target.dataset.listToggle;if(toggle!==undefined){const x=(db.shopping||[]).find(i=>i.id===Number(toggle));if(x)x.checked=e.target.checked;persist();return}
+ const del=e.target.dataset.listDelete;if(del!==undefined){db.shopping=db.shopping.filter(i=>i.id!==Number(del));persist()}
+};
+$('clearChecked').onclick=()=>{db.shopping=(db.shopping||[]).filter(x=>!x.checked);persist();toast('Artículos comprados eliminados de la lista')};
+function renderAnalysis(){
+ const receipts=db.receipts||[],current=monthReceipts(monthKey()),monthTotal=current.reduce((s,r)=>s+Number(r.total||0),0);
+ $('analysisMonth').textContent=money(monthTotal);
+ const counts={},spend={},products={};let lineCount=0;
+ receipts.forEach(r=>{const store=r.store||'Sin comercio';counts[store]=(counts[store]||0)+1;spend[store]=(spend[store]||0)+Number(r.total||0);(r.items||[]).forEach(i=>{const n=(i.name||'').trim();if(n){products[n]=(products[n]||0)+1;lineCount++}})});
+ const fav=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0];$('analysisStore').textContent=fav?fav[0]:'—';$('analysisStore').style.fontSize=fav&&fav[0].length>12?'16px':'23px';
+ $('analysisAverage').textContent=receipts.length?money(receipts.reduce((s,r)=>s+Number(r.total||0),0)/receipts.length):money(0);$('analysisProducts').textContent=lineCount;
+ const chart=$('monthlyChart');chart.innerHTML='';const months=[];
+ for(let i=5;i>=0;i--){const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-i);const key=monthKey(d);months.push({key,label:monthLabel(key),total:monthReceipts(key).reduce((s,r)=>s+Number(r.total||0),0)})}
+ const max=Math.max(1,...months.map(x=>x.total));
+ months.forEach(m=>{const c=document.createElement('div');c.className='chart-col';c.innerHTML=`<em>${m.total?money(m.total).replace(/\s/g,''):'$0'}</em><div class="barcol" style="height:${Math.max(2,m.total/max*105)}px"></div><small>${esc(m.label)}</small>`;chart.appendChild(c)});
+ const top=$('topProducts');top.innerHTML='';const sorted=Object.entries(products).sort((a,b)=>b[1]-a[1]).slice(0,7);
+ if(!sorted.length)top.innerHTML='<div class="empty">Cuando guardes boletas con productos, aparecerá aquí tu resumen.</div>';
+ sorted.forEach(([name,count])=>{const row=document.createElement('div');row.className='meter-row';row.innerHTML=`<span title="${esc(name)}">${esc(name.length>18?name.slice(0,17)+'…':name)}</span><div class="meter"><span style="width:${count/Math.max(1,sorted[0][1])*100}%"></span></div><strong>${count}</strong>`;top.appendChild(row)});
+ const stores=$('storeBreakdown');stores.innerHTML='';const storeSorted=Object.entries(spend).sort((a,b)=>b[1]-a[1]);
+ if(!storeSorted.length)stores.innerHTML='<div class="empty">Aún no hay gastos para comparar.</div>';
+ storeSorted.forEach(([name,total])=>{const row=document.createElement('div');row.className='meter-row';row.innerHTML=`<span>${esc(name)}</span><div class="meter"><span style="width:${total/Math.max(1,storeSorted[0][1])*100}%"></span></div><strong>${money(total)}</strong>`;stores.appendChild(row)});
+}
+
+function renderPriceComparison(){
+ const q=($('priceSearch').value||'').trim().toLowerCase(),comparison=$('priceComparison'),timeline=$('priceTimeline');
+ comparison.innerHTML='';timeline.innerHTML='';
+ if(!q){comparison.innerHTML='<div class="empty">Busca un producto para comparar tus precios registrados.</div>';timeline.innerHTML='<div class="empty">El historial aparecerá al seleccionar un producto.</div>';return}
+ const hits=[];
+ (db.receipts||[]).forEach(r=>(r.items||[]).forEach(i=>{if((i.name||'').toLowerCase().includes(q))hits.push({name:i.name,store:r.store||'Sin comercio',date:r.date||'',price:Number(i.price)||0,qty:Number(i.qty)||1,total:(Number(i.price)||0)*(Number(i.qty)||1)})}));
+ if(!hits.length){comparison.innerHTML='<div class="empty">No encontré ese producto en tus boletas. Revisa el nombre o registra una compra.</div>';timeline.innerHTML='';return}
+ const latest={};hits.sort((a,b)=>b.date.localeCompare(a.date)).forEach(x=>{if(!latest[x.store])latest[x.store]=x});
+ Object.values(latest).sort((a,b)=>a.price-b.price).forEach((x,i,arr)=>{const row=document.createElement('div');row.className='data-row';row.innerHTML=`<div class="main"><strong>${esc(x.store)}</strong><div class="sub">Último registro: ${esc(x.date)} · ${esc(x.name)}</div></div><div style="text-align:right"><strong>${money(x.price)}</strong><div class="sub">por unidad registrada</div></div>`;comparison.appendChild(row)});
+ const prices=hits.map(x=>x.price),min=Math.min(...prices),max=Math.max(...prices);
+ const tip=document.createElement('div');tip.className='callout';tip.innerHTML=`<strong>Rango observado: ${money(min)} – ${money(max)}</strong><span class="small">${hits.length} registro(s). Diferencia entre el menor y mayor precio: ${money(max-min)}. Comprueba que sean el mismo formato.</span>`;comparison.appendChild(tip);
+ hits.sort((a,b)=>b.date.localeCompare(a.date)).forEach(x=>{const row=document.createElement('div');row.className='data-row';row.innerHTML=`<div class="main"><strong>${esc(x.name)}</strong><div class="sub">${esc(x.date)} · ${esc(x.store)} · Cantidad ${x.qty}</div></div><strong>${money(x.price)}</strong>`;timeline.appendChild(row)});
+}
+$('searchPrices').onclick=renderPriceComparison;
+$('priceSearch').addEventListener('keydown',e=>{if(e.key==='Enter')renderPriceComparison()});
+function renderPlan(){
+ const sel=$('planRecipe'),old=sel.value;sel.innerHTML='';
+ recipes.forEach((r,i)=>{const o=document.createElement('option');o.value=r.name;o.textContent=r.name;sel.appendChild(o)});
+ if(recipes.some(r=>r.name===old))sel.value=old;
+ const root=$('mealPlanList');root.innerHTML='';
+ const range=$('planRange').value,now=new Date();now.setHours(0,0,0,0);const end=new Date(now);if(range!=='all')end.setDate(end.getDate()+Number(range)-1);else end.setFullYear(end.getFullYear()+10);
+ const plans=(db.plans||[]).filter(p=>{const d=new Date(p.date+'T12:00:00');return range==='all'||(d>=now&&d<=end)}).sort((a,b)=>(a.date+' '+a.meal).localeCompare(b.date+' '+b.meal));
+ if(!plans.length){root.innerHTML='<div class="empty">Aún no has planificado comidas para este período.</div>';return}
+ plans.forEach(p=>{const r=recipes.find(x=>x.name===p.recipe);const el=document.createElement('div');el.className='data-row';el.innerHTML=`<div class="main"><strong>${esc(p.meal)} · ${esc(p.recipe)}</strong><div class="sub">${esc(p.date)} · ${p.servings} porción(es)${r?' · '+esc(r.time):''}</div></div><button class="icon-btn danger" data-plan-delete="${p.id}">Eliminar</button>`;root.appendChild(el)});
+}
+$('addPlan').onclick=()=>{
+ const date=$('planDate').value,recipe=$('planRecipe').value,servings=Math.max(1,Number($('planServings').value)||1),meal=$('planMeal').value;
+ if(!date||!recipe){toast('Selecciona un día y una receta.');return}
+ db.plans=db.plans||[];db.plans.push({id:Date.now(),date,recipe,servings,meal});persist();toast('Comida agregada al plan semanal');
+};
+$('planRange').onchange=renderPlan;
+$('mealPlanList').onclick=e=>{const id=Number(e.target.dataset.planDelete);if(!id)return;db.plans=(db.plans||[]).filter(p=>p.id!==id);persist()};
+$('planMissingList').onclick=()=>{
+ const plans=db.plans||[];if(!plans.length){toast('Primero planifica una comida.');return}
+ const have=new Set((db.pantry||[]).map(x=>normalizeIngredient(x.name)));
+ const missing=new Map();
+ plans.forEach(p=>{const r=recipes.find(x=>x.name===p.recipe);if(r)r.need.forEach(n=>{const k=normalizeIngredient(n);if(!have.has(k)&&!missing.has(k))missing.set(k,{name:n,category:'Despensa'})})});
+ if(!missing.size){toast('Según tu despensa, no faltan ingredientes obligatorios para las recetas planificadas.');return}
+ db.shopping=db.shopping||[];const existing=new Set(db.shopping.filter(x=>!x.checked).map(x=>normalizeIngredient(x.name)));
+ let added=0;missing.forEach((v,k)=>{if(!existing.has(k)){db.shopping.push({id:Date.now()+added,name:v.name,qty:1,price:0,category:v.category,checked:false});added++}});
+ persist();toast(added?added+' ingrediente(s) agregados a la lista':'Los ingredientes faltantes ya estaban en tu lista');
+};
+
+function renderSettings(){$('settingsReceiptCount').textContent=(db.receipts||[]).length+' boleta(s)';$('settingsPantryCount').textContent=(db.pantry||[]).length+' producto(s)';}
+$('backupExport').onclick=()=>download(new Blob([JSON.stringify(db,null,2)],{type:'application/json;charset=utf-8'}),'me-sirve-respaldo-'+today()+'.json');
+$('backupImport').onclick=async()=>{
+ const f=$('backupFile').files?.[0];if(!f){toast('Selecciona un archivo de respaldo.');return}
+ try{const incoming=JSON.parse(await f.text());if(!incoming||!Array.isArray(incoming.receipts))throw new Error('Formato no válido');if(!confirm('Esto reemplazará los datos locales actuales. ¿Continuar?'))return;
+ db={receipts:incoming.receipts,budget:Number(incoming.budget)||200000,ingredients:Array.isArray(incoming.ingredients)?incoming.ingredients:[],pantry:Array.isArray(incoming.pantry)?incoming.pantry:[],shopping:Array.isArray(incoming.shopping)?incoming.shopping:[],plans:Array.isArray(incoming.plans)?incoming.plans:[]};
+ persist();$('backupFile').value='';toast('Respaldo restaurado');
+ }catch(err){toast('No pude restaurar el archivo: formato no válido.')}
+};
+$('clearAllData').onclick=()=>{if(confirm('¿Seguro que quieres borrar todas tus compras, despensa, lista y presupuesto? Esta acción no se puede deshacer.')){db={receipts:[],budget:200000,ingredients:[],pantry:[],shopping:[],plans:[]};persist();toast('Datos locales eliminados')}}
+
+function renderBudget(){const total=monthReceipts(monthKey()).reduce((s,r)=>s+Number(r.total||0),0),budget=Number(db.budget)||0,left=budget-total;$('budgetSpent').textContent=money(total);$('budgetLeft').textContent=money(left);$('budgetLeft').style.color=left<0?'#b13f2c':'var(--ink)';$('budgetBar').style.width=Math.min(100,budget?total/budget*100:0)+'%';$('budgetText').textContent=total===0?'Registra una compra para empezar.':left<0?'Has superado tu presupuesto en '+money(-left)+'.':'Has utilizado '+Math.round(total/(budget||1)*100)+'% de tu presupuesto.'}
+function renderAll(){const total=db.receipts.reduce((s,r)=>s+r.total,0);$('heroSpent').textContent=money(total);$('heroReceipts').textContent=db.receipts.length+' boletas registradas';$('countReceipts').textContent=db.receipts.length;$('totalReceipts').textContent=money(total);renderRecent();renderHistory();renderRecipes();renderBudget();renderHome();renderPantry();renderShopping();renderAnalysis();renderSettings();renderPriceComparison();renderPlan()}
+addDraft();$('ingredientInput').value=(db.ingredients||[]).join(', ');$('planDate').value=today();renderAll();
+
+// Navegación móvil y menú "Más".
+function closeMobileMore(){
+  document.getElementById('mobileMorePanel')?.classList.remove('open');
+  document.getElementById('mobileMoreBackdrop')?.classList.remove('open');
+}
+function openMobileMore(){
+  document.getElementById('mobileMorePanel')?.classList.add('open');
+  document.getElementById('mobileMoreBackdrop')?.classList.add('open');
+}
+document.querySelectorAll('.mobile-dock [data-page], .mobile-more-grid [data-page]').forEach(b=>{
+  b.addEventListener('click',()=>{nav(b.dataset.page);closeMobileMore();document.querySelector('.nav')?.classList.remove('mobile-open');});
+});
+document.querySelector('.mobile-dock [data-more]')?.addEventListener('click',()=>{
+  closeMobileMore();
+  document.querySelector('.nav')?.classList.toggle('mobile-open');
+});
+document.getElementById('closeMobileMore')?.addEventListener('click',closeMobileMore);
+document.getElementById('mobileMoreBackdrop')?.addEventListener('click',closeMobileMore);
+const originalNav = nav;
+nav = function(p){
+  originalNav(p);
+  document.querySelectorAll('.mobile-dock [data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));
+  document.querySelectorAll('.mobile-more-grid [data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));
+};
+let deferredInstallPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();deferredInstallPrompt=e;
+  const b=document.getElementById('installApp');if(b)b.textContent='＋ Instalar app';
+});
+document.getElementById('installApp')?.addEventListener('click',async()=>{
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt=null;
+  }else{
+    const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+    toast(isIOS?'En Safari, toca Compartir y luego “Añadir a pantalla de inicio”.':'Para instalar, abre Me Sirve desde una dirección HTTPS y usa el menú del navegador: “Instalar aplicación” o “Añadir a pantalla de inicio”.');
+  }
+});
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+
+</script>
+</body></html>
